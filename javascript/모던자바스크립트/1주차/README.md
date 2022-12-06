@@ -5,3 +5,6 @@
 5. [2.3-stict-mode](2/3-strict-mode/README.md)
 6. [2.4-variable](2/4-variable/README.md)
 7. [2.5-types](2/5-types/README.md)
+8. [2.6-alert-prompt-confirm](2/6-alert-prompt-confirm/README.md)
+9. [2.7-type-conversions](2/7-type-conversions/README.md)
+10. [2.8-operators](2/8-operators/README.md)
