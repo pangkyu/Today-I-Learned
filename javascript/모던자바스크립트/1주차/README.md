@@ -8,3 +8,4 @@
 8. [2.6-alert-prompt-confirm](2/6-alert-prompt-confirm/README.md)
 9. [2.7-type-conversions](2/7-type-conversions/README.md)
 10. [2.8-operators](2/8-operators/README.md)
+11. [2.9-comparison](2/9-comparison/README.md)
