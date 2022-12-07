@@ -9,3 +9,6 @@
 9. [2.7-type-conversions](2/7-type-conversions/README.md)
 10. [2.8-operators](2/8-operators/README.md)
 11. [2.9-comparison](2/9-comparison/README.md)
+12. [2.10-if-else](2/10-if-else/README.md)
+13. [2.11-logical-operators](2/11-logical-operatros/README.md)
+14. [2.12-nullish-coalescing-operator](2/12-nullish-coalescing-operator/README.md)
