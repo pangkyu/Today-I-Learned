@@ -13,3 +13,7 @@
 13. [2.11-logical-operators](2/11-logical-operatros/README.md)
 14. [2.12-nullish-coalescing-operator](2/12-nullish-coalescing-operator/README.md)
 15. [2.13-while-for](2/13-while-for/README.md)
+16. [2.14-switch](2/14-switch/README.md)
+17. [2.15-function-basics](2/15-function-basics/README.md)
+18. [2.16-function-expressions](2/16-function-expressions/README.md)
+19. [2.17-arrow-function](2/17-arrow-functions-basics/README.md)
