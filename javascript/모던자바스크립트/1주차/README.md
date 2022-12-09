@@ -12,3 +12,4 @@
 12. [2.10-if-else](2/10-if-else/README.md)
 13. [2.11-logical-operators](2/11-logical-operatros/README.md)
 14. [2.12-nullish-coalescing-operator](2/12-nullish-coalescing-operator/README.md)
+15. [2.13-while-for](2/13-while-for/README.md)
