@@ -368,3 +368,9 @@ alert(str.match(/\d\n/gm)); // 1,2
   - <code>a?b</code> : a가 없거나 1개, b가 없거나 1개. 'b', 'ab'..
 - <code>{m,n}</code> : m회 이상 n회 이하 나타나는 문자
   - <code>[els]{1,3}</code> : e or l or s 가 1개 이상 3개 이하
+
+##### 이스케이프
+
+- 정규표현식 패턴이 아닌 문자로 사용하고 싶을때는 앞에 <code>\</code>를 앞에 붙인다.
+
+https://blog.hexabrain.net/205
