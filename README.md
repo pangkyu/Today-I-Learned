@@ -26,7 +26,7 @@ git commit -m "[BOJ] Hello World / 브론즈5/ 1분" -m "https://www.acmicpc.net
 
 #### [알고리즘 목록](./알고리즘/README.md)
 
-|      주차      |                                                                                      내용                                                                                      |
-| :------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| **12월 5주차** |                                              [없는 숫자 더하기](https://school.programmers.co.kr/learn/courses/30/lessons/86051)                                               |
-| **1월 1주차**  | [핸드폰 번호 가리기](https://school.programmers.co.kr/learn/courses/30/lessons/12948), [부족한 금액 계산하기](https://school.programmers.co.kr/learn/courses/30/lessons/82612) |
+|      주차      |                                                                                                                              내용                                                                                                                               |
+| :------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| **12월 5주차** |                                                                                       [없는 숫자 더하기](https://school.programmers.co.kr/learn/courses/30/lessons/86051)                                                                                       |
+| **1월 1주차**  | [핸드폰 번호 가리기](https://school.programmers.co.kr/learn/courses/30/lessons/12948), [부족한 금액 계산하기](https://school.programmers.co.kr/learn/courses/30/lessons/82612),[키패드 누르기](https://school.programmers.co.kr/learn/courses/30/lessons/67256) |
