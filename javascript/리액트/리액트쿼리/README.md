@@ -4,6 +4,13 @@
 - <code>Redux</code>, <code>Recoil</code>, <code>Mobx</code>는 클라이언트 데이터를 관리하기에는 적합하나 **서베 데이터를 관리하기에는 적합하지 않다**
   - <code>Redux</code>를 활용하여 프로젝트의 전역상태를 관리를 할때 서버 데이터를 활용하려면 <code>Redux-saga</code>, <code>Redux-Thunk</code> 혹은 <code>RTK-Query</code>같은 또 다른 미들웨어를 사용해야한다.
 
+### 리액트쿼리가 만들어진 동기
+
+- 리액트 자체가 데이터를 패칭해오거나 업데이트 하는 옵션을 제공하지 않으므로 개발자들이 각자의 방식으로 http 통신 로직을 작성해야 했다.
+- 리덕스 같은 전역 상태관리 라이브러리들이 클라이언트 상태 값에 대해서는 잘 작동하나, 서버 상태에 대해서는 잘 작동하지 않는다.
+  - 서버 데이터는 항상 최신 상태임을 보장하지 않는다. 명시적으로 fetching을 수행해야 최신 데이터로 전환된다.
+  - 네트워크 통신은 최소한으로 줄이는 것이 좋으나, 복수의 컴포넌트에서 최신 데이터를 받아오기 위해 fetching을 여러번 수행하는 낭비가 발생할 수 있다.
+
 ## 리액트 쿼리의 라이프 사이클
 
 - <code>fetching</code> : 데이터 요청 상태
@@ -191,7 +198,9 @@ useEffect(() => {
 
 ## useMutation
 
-- 값을 바꿀때 사용하는 api.
+- 값을 바꿀때 사용하는 api(create, update, delete하며 서버상태에 사이드 이펙트를 일으키는 경우에 사용)
+- useMutation이 반환하는 객체 프로퍼티로 제공되는 상태 값은 useQuery와 동일하다.
+- <code>mutation.reset</code> : 현재의 error와 data를 모두 지울 수 있다.
 
 ```js
 import { useState, useContext, useEffect } from "react";
@@ -252,6 +261,42 @@ const mutation = useMutation(postTodo, {
 });
 ```
 
+- 만약, mutation에서 return된 값을 이용하여 get함수의 파라미터를 변경해야할 경우, <code>setQueryData</code>를 사용한다.
+
+```js
+const queryClient = useQueryClient();
+
+const mutation = useMutation(editTodo, {
+  onSuccess: (data) => {
+    // data가 fetchTodoById로 들어간다
+    queryClient.setQueryData(["todo", { id: 5 }], data);
+  },
+});
+
+const { status, data, error } = useQuery(["todo", { id: 5 }], fetchTodoById);
+
+mutation.mutate({
+  id: 5,
+  name: "nkh",
+});
+```
+
+## invalidation
+
+- stale 쿼리를 폐기한다.
+- 쿼리 데이터가 요청으로 서버에세 바뀌게 되면, 백그라운드에 남아있는 데이터는 과거 데이터가 되어 어플리케이션에서 쓸모 없어지는 상황이 발생할 수 있다.
+- invalidateQueries 메소드를 사용하면 개발자가 명시적으로 query가 stale되는 지점을 찝어줄 수 있음. 해당 메소드가 호출되면 쿼리가 바로 stale되고, 리패치가 진행된다.
+- 쿼리에 특정 키가 공통으로 들어가있으면 한번에 invalidation이 가능
+
+```js
+queryClient.invalidateQueries();
+queryClient.invalidateQueries("todos");
+queryClient.invalidateQueries({
+  predicate: (query) =>
+    query.queryKey[0] === "todos" && query.queryKey[1]?.version >= 10,
+});
+```
+
 ---
 
 ### 참고자료
@@ -260,3 +305,4 @@ const mutation = useMutation(postTodo, {
 - [My구독의 react query 전환기](https://tech.kakao.com/2022/06/13/react-query/)
 - [기억보다 기록을](https://kyounghwan01.github.io/blog/React/react-query/basic/#%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%B2)
 - [강디너의 개발 일지](https://kdinner.tistory.com/113)
+- [김맥스 블로그](https://maxkim-j.github.io/posts/react-query-preview/)
