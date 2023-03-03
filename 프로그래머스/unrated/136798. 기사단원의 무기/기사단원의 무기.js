@@ -14,6 +14,7 @@ function solution(number, limit, power) {
   }
  
     nums.map((item) => {
+        console.log(item);
         if(item > limit){
             result += power;
         }else{
