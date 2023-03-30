@@ -10,7 +10,6 @@ function solution(people, limit) {
         }else{
             count++ // 아니면 무거운사람 먼저 보트 탑승 
         }
-
     }
     return count
 
