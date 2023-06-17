@@ -34,3 +34,10 @@ OAuth가 등장하기 이전에는 구글의 AuthSub, 야후의 BBAuth 등 회�
 
 - 등록과정을 마치면 Client ID와 Client Secret을 얻을 수 있음. 이것들을 사용하여 액세스 토큰을 획득하는데 사용된다.
 - 클라이언트 아이디는 공개되어도 상관없으나, Client Secret은 절대 유출되어서는 안된다.
+
+### Refresh Token
+
+- 리프레시 토큰의 발급 여부와 방법 그리고 갱신 주기등은 OAuth를 제공하는 Resource server마다 상이하다.
+- Access Token은 만료기간이 있으며, 만료된 액세스 토큰으로 API를 요청하면 401 에러가 발생한다.
+- 액세스 토큰이 만료되어 401 에러가 발생하면 Client는 보관 중이던 Refresh Token을 보내서 새로운 액세스 토큰을 발급받도록 만듭니다.
+-
