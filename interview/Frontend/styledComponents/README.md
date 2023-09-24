@@ -61,6 +61,25 @@ render(
 );
 ```
 
+래핑하는 것 외에도 styled-components를 사용할 수 있다.
+
+```js
+<style>
+.abc123 {
+  background-color: transparent;
+  font-size: 2rem;
+}
+
+.def456 {
+  background-color: pink;
+}
+
+</style>
+
+<button class="abc123 def456">Hello World</button>
+
+```
+
 상속은 `styled()`생성자에 래핑하여 사용한다.
 
 ```js
