@@ -84,3 +84,82 @@ function solution(elements) {
   return sums.size;
 }
 ```
+
+```js
+// 가변 크기 윈도우 - 최소길이
+function minSubarrayLen(target, nums) {
+  let left = 0;
+  let sum = 0;
+  let minLen = Infinity;
+
+  for (let right = 0; right < nums.length; right++) {
+    sum += nums[right];
+
+    while (sum >= target) {
+      minLen = Math.min(minLen, right - left + 1);
+      sum -= nums[left];
+      left++;
+    }
+  }
+
+  return minLen === Infinity ? 0 : minLen;
+}
+
+console.log(minSubarrayLen(7, [2, 3, 1, 2, 4, 3])); // 2 (4+3)
+```
+
+### 3. 해시맵 활용 패턴
+
+빈도 계산, 중복 확인, 매핑 등에 사용됩니다
+
+```js
+function characterFrequency(str) {
+  const freq = {};
+
+  for (const char of str) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+
+  return freq;
+}
+
+console.log(characterFrequency("hello")); // {h: 1, e: 1, l: 2, o: 1}
+```
+
+애너그램 검사의 경우에는 2개의 문자열을 돌면서 1번 문자열은 카운트 증가, 2번 문자열은 카운트를 감소시켜 모든 count가 0이면 됩니다
+
+### 4. 스택 활용 패턴
+
+LIFO 특성을 활용합니다.
+마지막에 넣은 걸 먼저 처리해야 하는 문제의 경우 -> "스택"을 사용
+
+- 최근 상태 / undo
+- DFS
+- 괄호 / 중첩 구조
+- 문자열 뒤집기 / 후위 표기식
+
+```js
+function isValid(s) {
+  const stack = [];
+  const pairs = {
+    ")": "(",
+    "}": "{",
+    "]": "[",
+  };
+
+  for (const char of s) {
+    if (char in pairs) {
+      if (stack.pop() !== pairs[char]) {
+        return false;
+      }
+    } else {
+      stack.push(char);
+    }
+  }
+
+  return stack.length === 0;
+}
+
+console.log(isValid("()[]{}")); // true
+console.log(isValid("([)]")); // false
+```
